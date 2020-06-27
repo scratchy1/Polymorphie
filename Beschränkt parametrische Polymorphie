@@ -1,0 +1,77 @@
+interface Druckbar {
+void drucken();
+}
+import java.util.*;
+class BeschraenktGenerischerStack<ET extends Druckbar> {
+ArrayList<ET> stack = new ArrayList<ET>();
+public boolean isEmpty() {
+return stack.isEmpty();
+}
+public void push (ET elem) {
+stack.add(elem);
+}
+public ET pop () {
+if (!stack.isEmpty())
+return stack.remove(stack.size()-1);
+else
+return null;
+}
+public ET top () {
+if (!stack.isEmpty())
+return stack.get(stack.size()-1);
+else
+return null;
+}
+public void printAll() {
+for (ET elem : stack) {
+elem.drucken();
+}
+}
+}
+// Klassen, die g¨ultige Elementtypen darstellen
+class Person implements Druckbar {
+private String name;
+public Person (String name) {
+this.name = name;
+}
+public void drucken() {
+System.out.println();
+System.out.println("Personendaten: Name: " + name);
+/* ... */
+}
+}
+class Trainer extends Person {
+private String verein;
+public Trainer (String name, String verein) {
+super(name);
+this.verein = verein;
+}
+public void drucken() {
+super.drucken();
+System.out.println(" Verein: " + verein);
+}
+}
+// Testklasse
+class TestBeschraenktGenerischerStack {
+public static void main(String[] args) {
+
+/* Stack fuer Person-Objekte */
+
+BeschraenktGenerischerStack<Person> gst =
+new BeschraenktGenerischerStack<Person> ();
+gst.push(new Person("Zinedine Zidane"));
+gst.push(new Trainer("Juergen Klopp", "FC Liverpool"));
+while (!gst.isEmpty()) {
+gst.pop().drucken();
+}
+
+/* Stack fuer Trainer-Objekte */
+
+BeschraenktGenerischerStack<Trainer> gst_trainer =
+new BeschraenktGenerischerStack<Trainer> ();
+gst_trainer.push(new Trainer("Juergen Klopp", "FC Liverpool"));
+gst_trainer.push(new Trainer("Thomas Tuchel", "PSG"));
+gst_trainer.push(new Trainer("Paulo Sousa", "Girondins de Bordeaux"));
+gst_trainer.printAll();
+}
+}
