@@ -1,0 +1,27 @@
+class StackMitAdHocPolymorphie {
+ArrayList stack = new ArrayList();
+public boolean isEmpty() {
+return stack.isEmpty();
+}
+public void push (Integer elem) {
+stack.add(elem);
+}
+public void push (Float elem) {
+stack.add(elem);
+}
+public void push (Double elem) {
+stack.add(elem);
+}
+public Object pop () {
+if (!stack.isEmpty())
+return stack.remove(stack.size()-1);
+else
+return null;
+}
+public Object top () {
+if (!stack.isEmpty())
+return stack.get(stack.size()-1);
+else
+return null;
+}
+}
