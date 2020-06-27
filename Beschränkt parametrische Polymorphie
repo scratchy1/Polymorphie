@@ -28,7 +28,7 @@ elem.drucken();
 }
 }
 }
-// Klassen, die g¨ultige Elementtypen darstellen
+// Klassen, die gueltige Elementtypen darstellen
 class Person implements Druckbar {
 private String name;
 public Person (String name) {
