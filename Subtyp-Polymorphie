@@ -1,0 +1,12 @@
+class TestStack {
+public static void main(String[] args) {
+Stack stack = new Stack();
+stack.push(new Integer(1));
+stack.push(new String("zweites Element"));
+stack.push(new Float(3.3));
+if (!stack.isEmpty())
+System.out.println(stack.top());
+else
+System.out.println("Stack ist leer");
+while (!stack.isEmpty())
+System.out.println(stack.pop());
